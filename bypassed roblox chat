@@ -1,0 +1,55 @@
+local Filter = false -- leave to false
+local color = "red" -- "red", "green", and "blue"
+
+if not (Filter) then
+	if color == "red" then -- this gets the color of the bubble
+		game.Players.PlayerAdded:Connect(function(plr) -- finds the player
+    		plr.Chatted:Connect(function(msg) -- checks when the player chats
+				game.Chat:Chat(plr.Character.Head,tostring(msg),tostring("Red")) -- the bypassed chat bubble
+    		end)
+		end)
+	elseif color == "green" then -- this gets the color of the bubble
+		game.Players.PlayerAdded:Connect(function(plr) -- finds the player
+    		plr.Chatted:Connect(function(msg) -- checks when the player chats
+        		game.Chat:Chat(plr.Character.Head,tostring(msg),tostring("Green")) -- the bypassed chat bubble
+    		end)
+		end)
+	elseif color == "blue" then -- this gets the color of the bubble
+		game.Players.PlayerAdded:Connect(function(plr) -- finds the player
+    		plr.Chatted:Connect(function(msg) -- checks when the player chats
+        		game.Chat:Chat(plr.Character.Head,tostring(msg),tostring("Blue")) -- the bypassed chat bubble
+    		end)
+		end)
+	elseif color == "Red" then -- this gets the color of the bubble
+		game.Players.PlayerAdded:Connect(function(plr) -- finds the player
+    		plr.Chatted:Connect(function(msg) -- checks when the player chats
+        		game.Chat:Chat(plr.Character.Head,tostring(msg),tostring(color)) -- the bypassed chat bubble
+    		end)
+		end)
+	elseif color == "Green" then -- this gets the color of the bubble
+		game.Players.PlayerAdded:Connect(function(plr) -- finds the player
+    		plr.Chatted:Connect(function(msg) -- checks when the player chats
+        		game.Chat:Chat(plr.Character.Head,tostring(msg),tostring(color)) -- the bypassed chat bubble
+    		end)
+		end)
+	elseif color == "Blue" then -- this gets the color of the bubble
+		game.Players.PlayerAdded:Connect(function(plr) -- finds the player
+    		plr.Chatted:Connect(function(msg) -- checks when the player chats
+        		game.Chat:Chat(plr.Character.Head,tostring(msg),tostring(color)) -- the bypassed chat bubble
+    		end)
+		end)
+	end
+    repeat wait()
+		game.Players.BubbleChat = false -- disables the filtered chat
+	until game.Players.BubbleChat == false -- makes sure the filtered chat is disabled
+	repeat wait()
+		game.Players.ClassicChat = true -- enables the chat box
+	until game.Players.ClassicChat == true -- makes sure the chat box is enabled
+    local chat = require(game.ServerScriptService:FindFirstChild("ChatServiceRunner").ChatService) -- what creates the roblox chat
+    chat.InternalApplyRobloxFilterNewAPI=function(self,sp,mes,textfilcon) -- creates the bypassed chat
+    	return true,false,mes
+	end
+	chat.InternalApplyRobloxFilter=function(self,sp,mes,toname) -- applies the bypassed chat
+		return mes
+	end
+end
